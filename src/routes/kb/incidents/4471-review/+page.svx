@@ -1,0 +1,86 @@
+---
+layout: runbook
+title: '#4471 reviewed: two causes behind matching subjects'
+owner: Codex with the MEGA student
+status: reviewed snapshot
+reviewed: 2026-10-30
+signature: 'Codex with the MEGA student — S01E03 — 2026-10-30'
+---
+
+<script>
+  import InvestigationSummary from '#lib/kb/InvestigationSummary.svelte';
+  import CauseTable from '#lib/kb/CauseTable.svelte';
+  import QueueTimeline from '#lib/kb/QueueTimeline.svelte';
+  import DedupeExplorer from '#lib/kb/DedupeExplorer.svelte';
+  import RenderStamp from '#lib/kb/RenderStamp.svelte';
+  import Callout from '#lib/kb/Callout.svelte';
+</script>
+
+## Finding
+
+The [original incident page](/kb/incidents/4471/) says one issue and one fix.
+The export's executable classification identifies two distinct causes, so the shared subject
+does not establish a duplicate. This review concerns the export dated 4 October 2026;
+the reviewed date records this investigation, not a refresh of the underlying desk data.
+
+<InvestigationSummary />
+
+## Separate fixes
+
+**Shared parser.** The parser always reads month first. A day-first tenant's ambiguous date
+therefore changes meaning: Harbour Dental's R-41200 reports 7 April becoming 4 July.
+Use the tenant's date contract and test ambiguous dates in both directions.
+
+**Form hint.** booking-v3 tells people to enter `MM/DD/YYYY`, while its form reads the
+day-first tenant's convention. Copper Studio's R-41230 reports January 6 becoming June 1.
+Make the displayed hint, validation and parser agree. A shared-parser fix alone does not fix
+this misleading instruction.
+
+The two issue drafts and complete report memberships are included in the repo under
+`issues/` and `analysis/`. Counts below are computed from report IDs, tenant settings and
+the supplied classifier at render time; they are not copied from intake tags.
+
+<CauseTable ticket={4471} />
+
+## Read the dates on the chart
+
+Reports were received from April onward. The large July merge bar records when the desk
+filed older reports under #4471, not when all those problems began. Compare received and
+merged bars before assigning an incident onset or claiming a new regression.
+
+<QueueTimeline ticket={4471} />
+
+## Five one-day observations remain an uncertainty
+
+The desk's notes name R-41202, R-41209, R-41236, R-41344 and R-41620. Their bodies mention
+one-day differences, June-only behavior, an invite arriving before booking, and different
+days for Lisbon and Toronto. The exported classifier still places all five under parser.
+Keep that fact visible in the count, and investigate timezone and event-timing evidence;
+these reports do not alone establish a third confirmed root cause. Do not count them twice.
+
+## Replace subject-only triage
+
+The [subject-only rule](/kb/triage/dedupe/) and
+[accepted decision 0001](/kb/decisions/0001-dedupe-by-subject/) were reviewed in June 2024.
+Their accepted text is historical evidence, not proof that the rule matches the current
+classifier. Equal subjects can cross causes; different subjects can share a cause.
+The live examples below compute this distinction from tenant, channel and booking form.
+Unknown tenant data is unresolved evidence, not permission to merge.
+
+<DedupeExplorer />
+
+<Callout>
+Read the body, join the tenant's locale and booking form, then compare causes before merging.
+Never substitute the reporter's browser locale or intake's guess for the tenant contract.
+</Callout>
+
+[Decision 0002](/kb/decisions/0002-dedupe-by-cause/) proposes the replacement rule without
+rewriting accepted decision 0001. The desk still owns adoption of that proposal.
+
+## Next review
+
+The desk keeps working while this investigation runs. Before filing a final claim, check
+the desk's latest evidence, regenerate the counts, and revise issues and this rendered page
+if the report set changes. A valid snapshot is not a promise that today's queue is unchanged.
+
+<RenderStamp {signature} />

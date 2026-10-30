@@ -1,0 +1,33 @@
+---
+layout: runbook
+title: '0002 · Compare causes before merging reports'
+owner: Codex with the MEGA student
+status: proposed
+reviewed: 2026-10-30
+signature: 'Codex with the MEGA student — S01E03 — 2026-10-30'
+---
+
+<script>
+  import RenderStamp from '#lib/kb/RenderStamp.svelte';
+</script>
+
+## Context
+
+Decision 0001 groups by normalized subject. The #4471 investigation finds distinct parser
+and form-hint causes behind similar subjects. The supplied classifier and DedupeExplorer
+already distinguish these causes using tenant locale, form version and report channel.
+
+## Proposed decision
+
+Read each report, deduplicate IDs, resolve its tenant, and compare the cause before merging.
+Matching subjects are a search aid, not proof. Different subjects do not prevent a merge
+when evidence establishes the same cause. Unknown tenants stay unresolved until investigated.
+Keep one-day observations visible as uncertainty instead of inventing a confirmed cause.
+
+## Consequences
+
+Triage needs more context than a subject comparison, but engineering receives separate
+fixes with auditable counts. The desk must approve this proposal before it supersedes
+accepted decision 0001; that accepted record remains unchanged.
+
+<RenderStamp {signature} />
