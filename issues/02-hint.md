@@ -18,3 +18,9 @@ Deduplicate by report ID, restrict to #4471, join tenant metadata, and run the e
 - Test a day-first locale through booking-v3 with ambiguous dates and a month-first locale as a control.
 - Route form-hint reports separately from shared-parser reports even when their subjects match.
 - Verify the count against subsequent desk updates before submission.
+
+## Engineering outcome — 5 October 2026
+
+The course desk now records #4471 closed and hint WON'T FIX: booking-v3 form retired.
+Close this issue as not planned, not completed: the affected form was retired rather than its
+misleading hint repaired. The 33 reports remain part of the historical incident record.

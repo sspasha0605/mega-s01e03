@@ -20,3 +20,9 @@ Deduplicate by report ID, restrict to `mergedInto === 4471`, join each report to
 - Investigate the five one-day reports listed in `desk-notes.json` without silently removing them from the exported classification.
 
 The export is a snapshot. Recheck new desk reports before treating this count as current.
+
+## Engineering outcome — 5 October 2026
+
+The course desk now records #4471 closed and parser FIXED: `fix(dates): parse dd/mm for eu locales`.
+Close this parser issue as completed based on that update. The count remains the historical
+4 October export, and the five one-day observations are not individually explained by this update.

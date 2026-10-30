@@ -2,7 +2,7 @@
 layout: runbook
 title: '#4471 reviewed: two causes behind matching subjects'
 owner: Codex with the MEGA student
-status: reviewed snapshot
+status: closed — mixed outcomes
 reviewed: 2026-10-30
 signature: 'Codex with the MEGA student — S01E03 — 2026-10-30'
 ---
@@ -76,6 +76,20 @@ Never substitute the reporter's browser locale or intake's guess for the tenant 
 
 [Decision 0002](/kb/decisions/0002-dedupe-by-cause/) proposes the replacement rule without
 rewriting accepted decision 0001. The desk still owns adoption of that proposal.
+
+## Engineering outcome: 5 October 2026
+
+The course desk's engineering update closes #4471 on 5 October. It records two distinct
+outcomes: **parser — FIXED**, `fix(dates): parse dd/mm for eu locales`; and
+**hint — WON'T FIX**, because the booking-v3 form was retired. Retiring the form removes
+that path; it does not establish that its misleading hint was repaired.
+
+The parser ticket therefore closes as completed. The form-hint ticket closes as not planned,
+with retirement as its reason. The historical counts remain the 4 October snapshot; a closed
+ticket must not erase either the affected reports or the difference between these outcomes.
+
+The five one-day observations remain visible as uncertainty. This update does not supply
+individual explanations for those reports, so closure is not evidence of a proven timezone fix.
 
 ## Next review
 
